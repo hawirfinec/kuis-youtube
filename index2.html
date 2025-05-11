@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Kuis YouTube Shorts</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        overflow: hidden;
+      }
+
+      #video-container {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+      }
+
+      #youtube-short {
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
+
+      #quiz-content {
+        position: absolute;
+        bottom: 5%;
+        left: 50%;
+        transform: translateX(-50%);
+        background: transparent;
+        padding: 10px;
+        color: white;
+        text-align: center;
+        z-index: 1000;
+        width: 95%;
+        max-width: 400px;
+        animation: fadeIn 0.5s ease-out;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translate(-50%, 20px);
+        }
+        to {
+          opacity: 1;
+          transform: translate(-50%, 0);
+        }
+      }
+
+      #question {
+        font-size: 1.8rem;
+        margin-bottom: 15px;
+        color: #fff;
+        text-shadow: 3px 3px 1px rgba(0, 0, 0, 3);
+      }
+
+      .answer-btn {
+        display: block;
+        width: 80%;
+        margin: 10px auto;
+        padding: 12px;
+        background: rgba(243, 8, 8, 0.7);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 1.4rem;
+        cursor: pointer;
+        transition: background 0.2s;
+      }
+
+      .answer-btn:hover {
+        background: rgba(51, 103, 214, 0.7);
+      }
+
+      #progress {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: rgba(0, 0, 0, 0.7);
+        color: white;
+        padding: 8px 12px;
+        border-radius: 6px;
+        z-index: 1000;
+        font-size: 1rem;
+      }
+
+      #timer {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background: rgba(0, 0, 0, 0.7);
+        color: #ff7043;
+        font-weight: bold;
+        padding: 8px 12px;
+        border-radius: 6px;
+        z-index: 1000;
+        font-size: 1rem;
+      }
+
+      #score {
+        position: absolute;
+        top: 60px;
+        right: 10px;
+        background: rgba(0, 0, 0, 0.7);
+        color: white;
+        padding: 8px 12px;
+        border-radius: 6px;
+        z-index: 1000;
+        font-size: 1rem;
+      }
+
+      /* Hapus orientation alert dan sesuaikan untuk portrait */
+      @media (max-width: 600px) and (orientation: portrait) {
+        #quiz-content {
+          bottom: 2%;
+          width: 98%;
+        }
+        
+        #question {
+          font-size: 1.6rem;
+        }
+        
+        .answer-btn {
+          font-size: 1.3rem;
+          padding: 10px;
+          width: 85%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Container Video YouTube -->
+    <div id="video-container">
+      <div id="timer"></div>
+      <div id="progress">Pertanyaan 1 dari 10</div>
+      <div id="score">Skor: 0/10</div>
+      <iframe
+        id="youtube-short"
+        src="https://www.youtube.com/embed/qo8YtstT2jA?autoplay=1&mute=0&controls=0&loop=1&playlist=qo8YtstT2jA"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+    </div>
+
+    <!-- Overlay Kuis -->
+    <div id="quiz-content">
+      <h3 id="question">Memuat pertanyaan...</h3>
+      <div id="answers">
+        <!-- Tombol jawaban akan diisi oleh JavaScript -->
+      </div>
+    </div>
+
+    <script>
+      // Konfigurasi Kuis
+      const questions = [
+        {
+          videoId: "qo8YtstT2jA",
+          question: "Apa ibukota Indonesia?",
+          options: ["Jakarta", "Bandung", "Surabaya", "Medan"],
+          correctAnswer: 0,
+        },
+        // ... (pertanyaan lainnya tetap sama)
+      ];
+
+      // ... (script JavaScript lainnya tetap sama)
+      
+      // Hapus fungsi checkOrientation() atau komentari
+      /*
+      function checkOrientation() {
+        if (window.innerHeight > window.innerWidth) {
+          alert("Putar HP ke landscape untuk pengalaman lebih baik!");
+        }
+      }
+      */
+
+      window.onload = function () {
+        loadQuestion();
+        // checkOrientation(); // Dikomentari karena tidak diperlukan lagi
+      };
+    </script>
+  </body>
+</html>
